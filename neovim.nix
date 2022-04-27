@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -20,23 +20,26 @@
           start = [
             onedark-vim
             lightline-vim
+
             nerdtree
+
+            nvim-lspconfig
+
             nvim-cmp
             cmp-path
             cmp-nvim-lsp
             cmp-vsnip
             vim-vsnip
-            nvim-lspconfig
+
             (nvim-treesitter.withPlugins (
-	      plugins: with plugins; [
-	        tree-sitter-nix
-            tree-sitter-lua
-            tree-sitter-python
-            tree-sitter-latex
-	      ]
-	    ))
+              plugins: with plugins; [
+                tree-sitter-nix
+                tree-sitter-lua
+                tree-sitter-python
+                tree-sitter-latex
+              ]
+            ))
           ];
-          opt = [];
         };
       };
     })

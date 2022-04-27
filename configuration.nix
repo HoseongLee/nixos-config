@@ -85,16 +85,16 @@
     libinput.enable = true;
 
     displayManager = {
-        lightdm.extraConfig = ''
-          user-authority-in-system-dir = true
-        '';
+      lightdm.extraConfig = ''
+        user-authority-in-system-dir = true
+      '';
 
-        defaultSession = "none+awesome";
+      defaultSession = "none+awesome";
 
-        job.logToFile = false;
+      job.logToFile = false;
 
-        autoLogin.enable = true;
-        autoLogin.user = "hoseong";
+      autoLogin.enable = true;
+      autoLogin.user = "hoseong";
     };
 
     windowManager.awesome.enable = true;
@@ -113,17 +113,17 @@
   };
 
   services.picom = {
-      enable = true;
-      vSync = true;
-      experimentalBackends = true;
+    enable = true;
+    vSync = true;
+    experimentalBackends = true;
   };
 
   programs.zsh.enable = true;
 
   programs.gnupg.agent = {
-      enable = true;
-      pinentryFlavor = "curses";
-      enableSSHSupport = true;
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
   };
 
   services.pcscd.enable = true;
