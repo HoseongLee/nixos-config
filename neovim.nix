@@ -4,6 +4,10 @@
   environment.systemPackages = with pkgs; [
     xclip
 
+    rnix-lsp
+
+    sumneko-lua-language-server
+
     nodePackages.pyright
 
     texlab
@@ -20,12 +24,15 @@
             nvim-cmp
             cmp-path
             cmp-nvim-lsp
+            cmp-vsnip
+            vim-vsnip
             nvim-lspconfig
             (nvim-treesitter.withPlugins (
 	      plugins: with plugins; [
 	        tree-sitter-nix
-		tree-sitter-python
-		tree-sitter-latex
+            tree-sitter-lua
+            tree-sitter-python
+            tree-sitter-latex
 	      ]
 	    ))
           ];
