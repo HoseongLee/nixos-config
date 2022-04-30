@@ -10,6 +10,7 @@
   time.hardwareClockInLocalTime = true;
 
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.hsphfpd.enable = true;
 
   hardware.opengl = {
     enable = true;
@@ -101,13 +102,18 @@
 
   };
 
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "\${HOME}/.cache";
     XDG_CONFIG_HOME = "\${HOME}/.config";
     XDG_BIN_HOME    = "\${HOME}/.local/bin";
     XDG_DATA_HOME   = "\${HOME}/.local/share";
-
-    NIX_BUILD_SHELL="zsh";
 
     XCOMPOSECACHE="\${XDG_CACHE_HOME}/X11/xcompose";
   };
