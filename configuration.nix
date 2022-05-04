@@ -61,6 +61,8 @@
     evince
     firefox
     alacritty
+    
+    capitaine-cursors
 
     intel-gpu-tools
 
@@ -87,6 +89,12 @@
     displayManager = {
       lightdm.extraConfig = ''
         user-authority-in-system-dir = true
+      '';
+
+      sessionCommands = ''
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
+          Xcursor.theme: capitaine-cursors-white
+        ''}
       '';
 
       defaultSession = "none+awesome";
