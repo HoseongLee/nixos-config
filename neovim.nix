@@ -28,6 +28,7 @@
             nvim-cmp
             cmp-path
             cmp-nvim-lsp
+            cmp-nvim-lua
             cmp-vsnip
             vim-vsnip
 
