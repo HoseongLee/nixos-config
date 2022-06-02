@@ -29,7 +29,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -134,6 +134,7 @@
   };
 
   services.pcscd.enable = true;
+  services.tlp.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
 
