@@ -55,10 +55,16 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "zoom"
+  ];
+
   environment.systemPackages = with pkgs; [
     exa
     git
     wget
+    sshfs
+    unzip
     gnupg
     killall
 
@@ -67,11 +73,15 @@
     evince
     firefox
     alacritty
-    
+
+    fontforge-gtk
+
     capitaine-cursors
 
+    powertop
     intel-gpu-tools
 
+    zoom-us
   ];
 
   fonts.fonts = with pkgs; [
