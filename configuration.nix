@@ -37,6 +37,11 @@
   # Set your time zone.
   time.timeZone = "Asia/Seoul";
 
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ hangul ];
+  };
+
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     earlySetup = true;
@@ -117,6 +122,10 @@
     XDG_DATA_HOME   = "\${HOME}/.local/share";
 
     XCOMPOSECACHE="\${XDG_CACHE_HOME}/X11/xcompose";
+
+    GTK_IM_MODULE="ibus";
+    QT_IM_MODULE="ibus";
+    XMODIFIERS="@im=ibus";
   };
 
   services.picom = {
