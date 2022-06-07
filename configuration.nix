@@ -113,7 +113,7 @@
         ''}
       '';
 
-      defaultSession = "none+awesome";
+      defaultSession = "none+qtile";
 
       job.logToFile = false;
 
@@ -121,7 +121,7 @@
       autoLogin.user = "hoseong";
     };
 
-    windowManager.awesome.enable = true;
+    windowManager.qtile.enable = true;
 
   };
 
