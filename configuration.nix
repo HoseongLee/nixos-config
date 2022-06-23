@@ -94,8 +94,6 @@
     enable = true;
     layout = "us";
 
-    dpi = 192;
-
     videoDrivers = [ "modesetting" ];
 
     useGlamor = true;
@@ -105,6 +103,10 @@
     displayManager = {
       lightdm.extraConfig = ''
         user-authority-in-system-dir = true
+      '';
+
+      setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --off --output DP-3 --primary --size 1920x1080 --mode 1920x1080 --rate 120 --dpi 96
       '';
 
       sessionCommands = ''
@@ -157,7 +159,7 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.05";
 
 }
 
