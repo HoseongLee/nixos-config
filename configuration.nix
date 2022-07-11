@@ -68,12 +68,17 @@
     gnupg
     killall
 
+    gcc
+    cargo
+    rustc
+
     dmenu
 
     evince
     firefox
     alacritty
 
+    gnome.nautilus
     fontforge-gtk
 
     capitaine-cursors
@@ -138,6 +143,17 @@
     GTK_IM_MODULE="ibus";
     QT_IM_MODULE="ibus";
     XMODIFIERS="@im=ibus";
+
+    GPG_TTY="\${TTY}";
+
+    LESSHISTFILE="";
+
+    ZDOTDIR="\${XDG_CONFIG_HOME}/zsh";
+    GRADLE_USER_HOME="\${XDG_DATA_HOME}/gradle";
+
+    EDITOR="nvim";
+    TERMINAL="alacritty";
+    BROWSER="firefox";
   };
 
   services.picom = {

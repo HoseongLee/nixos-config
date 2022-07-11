@@ -13,6 +13,8 @@
     texlab
     texlive.combined.scheme-full
 
+    rust-analyzer
+
     (neovim.override {
       configure = {
         customRC = "luafile ~/.config/nvim/init.lua";
