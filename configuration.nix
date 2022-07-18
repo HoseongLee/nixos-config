@@ -4,6 +4,7 @@
   imports =
   [
     ./audio.nix
+    ./autorandr.nix
     ./neovim.nix
     /etc/nixos/hardware-configuration.nix
   ];
@@ -72,8 +73,6 @@
     cargo
     rustc
 
-    dmenu
-
     evince
     firefox
     alacritty
@@ -111,18 +110,16 @@
       '';
 
       setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --off --output DP-3 --primary --size 1920x1080 --mode 1920x1080 --rate 120 --dpi 96
+        ${pkgs.autorandr}/bin/autorandr --change
       '';
 
       sessionCommands = ''
+        ${pkgs.autorandr}/bin/autorandr --change
+
         ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
           Xcursor.theme: capitaine-cursors-white
         ''}
       '';
-
-      defaultSession = "none+qtile";
-
-      job.logToFile = false;
 
       autoLogin.enable = true;
       autoLogin.user = "hoseong";
