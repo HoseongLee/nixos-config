@@ -1,14 +1,19 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    NixOS-WSL = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, NixOS-WSL, ... }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";
@@ -18,15 +23,14 @@
       ];
     };
 
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";
       modules = [ 
         ./common/configuration.nix
-        ./laptop/configuration.nix
-        nixos-hardware.nixosModules.dell-xps-15-9560-intel
+        ./wsl/configuration.nix
+        NixOS-WSL.nixosModules.wsl
       ];
     };
-
   };
 }

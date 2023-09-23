@@ -11,4 +11,3 @@ require('lualine').setup { options = { icons_enabled = false } }
 
 --autocmd filetype rust nnoremap <F5> :w<CR> :!rustc --edition 2021 -O -o bin %<CR>:sp<CR><C-w><C-w>:term<CR>:resize10<CR>i./bin<CR>
 --autocmd filetype c nnoremap <F5> :w<CR> :sp<CR><C-w><C-w>:term<CR>:resize10<CR>i make<CR>
---autocmd filetype tex nnoremap <F5> :w<CR>:!pdflatex %<CR>

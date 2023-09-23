@@ -8,6 +8,13 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'tex' },
+  callback = function()
+    map.set('n', '<F5>', ':w<CR>:!pdflatex %<CR>')
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'nix', 'lua' },
   callback = function()
     vim.bo.tabstop = 2

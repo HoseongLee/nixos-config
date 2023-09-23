@@ -1,11 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     ccls
     metals
+    texlab
+    texlive.combined.scheme-full
     rust-analyzer
     nodePackages.pyright
+    nodePackages.typescript-language-server
 
     (neovim.override {
       configure = {
@@ -31,7 +34,9 @@
               plugins: with plugins; [
                 tree-sitter-nix
                 tree-sitter-tsx
+                tree-sitter-lua
                 tree-sitter-rust
+                tree-sitter-latex
                 tree-sitter-scala
                 tree-sitter-python
               ]

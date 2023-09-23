@@ -2,6 +2,8 @@ local lspconfig = require('lspconfig')
 
 lspconfig.ccls.setup({})
 
+lspconfig.tsserver.setup({})
+
 lspconfig.pyright.setup({
     settings = {
         python = {
@@ -18,9 +20,7 @@ lspconfig.metals.setup({})
 
 lspconfig.rust_analyzer.setup({})
 
-lspconfig.texlab.setup {
-    filetypes = { "plaintex" }
-}
+lspconfig.texlab.setup({})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
