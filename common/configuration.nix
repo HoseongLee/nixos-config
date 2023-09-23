@@ -18,7 +18,7 @@
   environment.systemPackages = with pkgs; [
     eza
     git
-		gcc
+    gcc
     wget
     sshfs
     unzip
@@ -60,5 +60,5 @@
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
