@@ -16,7 +16,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    eza
+    exa
     git
     gcc
     wget
@@ -26,6 +26,9 @@
     killall
 
     gnumake
+
+    yarn
+    nodejs_18
   ];
 
   environment.sessionVariables = rec {
@@ -56,9 +59,11 @@
 
   services.pcscd.enable = true;
 
+  services.mongodb.enable = true;
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
 }

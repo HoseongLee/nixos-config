@@ -6,8 +6,8 @@ fi
 
 rebuild () { sudo nixos-rebuild --flake .#"$1" switch }
 
-alias ls='eza -l --color=always --group-directories-first'
-alias lsa='eza -al --color=always --group-directories-first'
+alias ls='exa -l --color=always --group-directories-first'
+alias lsa='exa -al --color=always --group-directories-first'
 
 alias mv=mv -i
 alias cp=cp -i

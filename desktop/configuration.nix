@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -53,6 +53,13 @@
     wl-clipboard
   ];
 
+  programs.hyprland = {
+    enable = true;
+    package = (inputs.hyprland.packages.${pkgs.system}.hyprland.override {
+			enableNvidiaPatches = true;
+		});
+  };
+
   services.xserver = {
     enable = true;
 		videoDrivers = [ "nvidia" ];
@@ -65,12 +72,7 @@
 
   programs.xwayland.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    enableNvidiaPatches = true;
-  };
-
-  fonts.packages = with pkgs; [
+  fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
     noto-fonts-cjk
   ];

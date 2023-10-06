@@ -3,10 +3,11 @@
 {
   environment.systemPackages = with pkgs; [
     ccls
-    metals
     texlab
-    texlive.combined.scheme-full
     rust-analyzer
+
+    texlive.combined.scheme-full
+
     nodePackages.pyright
     nodePackages.typescript-language-server
 
@@ -35,9 +36,9 @@
                 tree-sitter-nix
                 tree-sitter-tsx
                 tree-sitter-lua
+                tree-sitter-java
                 tree-sitter-rust
                 tree-sitter-latex
-                tree-sitter-scala
                 tree-sitter-python
               ]
             ))

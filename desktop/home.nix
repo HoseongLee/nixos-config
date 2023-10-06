@@ -22,7 +22,7 @@
         rofi-wayland
 
         evince
-        firefox
+        firefox-bin
         alacritty
         gnome.nautilus
       ];

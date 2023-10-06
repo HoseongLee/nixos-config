@@ -1,9 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+
+    hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.30.0";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -13,7 +15,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, NixOS-WSL, ... }@inputs: {
+  outputs = { nixpkgs, NixOS-WSL, ... }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";
