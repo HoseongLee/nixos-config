@@ -12,7 +12,7 @@
 
 			gtk = {
 				enable = true;
-				cursorTheme.name = "Capitaine Cursors - White";
+				cursorTheme.name = "capitaine-cursors-white";
 				cursorTheme.package = pkgs.capitaine-cursors;
 			};
 
@@ -24,6 +24,7 @@
         evince
         firefox-bin
         alacritty
+
         gnome.nautilus
       ];
 

@@ -23,12 +23,8 @@
     sshfs
     unzip
     gnupg
-    killall
-
     gnumake
-
-    yarn
-    nodejs_18
+    killall
   ];
 
   environment.sessionVariables = rec {
@@ -58,8 +54,6 @@
   };
 
   services.pcscd.enable = true;
-
-  services.mongodb.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

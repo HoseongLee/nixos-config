@@ -13,8 +13,6 @@ alias mv=mv -i
 alias cp=cp -i
 alias rm=rm -i
 
-alias shell='nix-shell shell.nix --command zsh'
-
 autoload -U compinit; compinit
 zstyle ':completion:*' menu select
 

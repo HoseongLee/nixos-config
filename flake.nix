@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.30.0";
 
@@ -22,6 +23,7 @@
       modules = [
         ./common/configuration.nix
         ./desktop/configuration.nix
+        ./development/configuration.nix
       ];
     };
 
@@ -31,6 +33,7 @@
       modules = [ 
         ./common/configuration.nix
         ./wsl/configuration.nix
+        ./development/configuration.nix
         NixOS-WSL.nixosModules.wsl
       ];
     };

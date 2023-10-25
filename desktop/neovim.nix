@@ -6,8 +6,6 @@
     texlab
     rust-analyzer
 
-    texlive.combined.scheme-full
-
     nodePackages.pyright
     nodePackages.typescript-language-server
 
@@ -33,6 +31,8 @@
 
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
+                tree-sitter-c
+                tree-sitter-cpp
                 tree-sitter-nix
                 tree-sitter-tsx
                 tree-sitter-lua

@@ -41,10 +41,6 @@
   users.users.hoseong.extraGroups = [ "wheel" "video" "docker" "networkmanager" ];
 
   environment.systemPackages = with pkgs; [
-    dune_3
-    ocaml
-    ocamlPackages.menhir
-
     patchelf
     nix-index
 
@@ -71,6 +67,9 @@
   };
 
   programs.xwayland.enable = true;
+
+  services.gvfs.enable = true;
+  security.polkit.enable = true;
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
