@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -50,9 +50,7 @@
 
   programs.hyprland = {
     enable = true;
-    package = (inputs.hyprland.packages.${pkgs.system}.hyprland.override {
-      enableNvidiaPatches = true;
-    });
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   services.xserver = {
@@ -78,6 +76,9 @@
   environment.sessionVariables = rec {
     TERMINAL = "alacritty";
     BROWSER = "firefox";
+
+    CARGO_HOME = "\${XDG_DATA_HOME}/cargo";
+    CUDA_CACHE_PATH = "\${XDG_CACHE_HOME}/nv";
   };
 
   virtualisation.docker.enable = true;

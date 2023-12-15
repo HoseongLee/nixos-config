@@ -1,10 +1,6 @@
-{ lib, pkgs, config, modulesPath, ... }:
+{ pkgs, config, ... }:
 
 {
-  imports = [
-    "${modulesPath}/profiles/minimal.nix"
-  ];
-
   nix.package = pkgs.nixFlakes;
 
   wsl = {

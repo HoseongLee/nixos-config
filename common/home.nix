@@ -30,6 +30,11 @@
         recursive = true;
       };
 
+      home.file.".config/nvim" = {
+        source = ./dotfiles/nvim;
+        recursive = true;
+      };
+
       programs.direnv = {
         enable = true;
         enableZshIntegration = true;

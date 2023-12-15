@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
 
-    hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.32.3";
+    hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.33.1";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -26,23 +26,27 @@
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
 
-      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs system; };
+      overlays.custom-packages = final: _prev: import ./packages {pkgs = final;};
 
-        modules = [
-          ./common/configuration.nix
-          ./desktop/configuration.nix
-        ];
-      };
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs system; };
 
-      nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+          modules = [
+            ./common/configuration.nix
+            ./desktop/configuration.nix
+          ];
+        };
 
-        modules = [
-          ./common/configuration.nix
-          ./wsl/configuration.nix
-          NixOS-WSL.nixosModules.wsl
-        ];
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs system; };
+
+          modules = [
+            ./common/configuration.nix
+            ./wsl/configuration.nix
+            NixOS-WSL.nixosModules.wsl
+          ];
+        };
       };
     };
 }

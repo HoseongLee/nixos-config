@@ -2,6 +2,15 @@
 
 {
   environment.systemPackages = with pkgs; [
+    ccls
+    texlab
+
+    rust-analyzer
+		wgsl-analyzer
+
+    nodePackages.pyright
+    nodePackages.typescript-language-server
+
     (neovim.override {
       configure = {
         customRC = "luafile ~/.config/nvim/init.lua";
@@ -24,8 +33,16 @@
 
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
+                tree-sitter-c
+                tree-sitter-cpp
                 tree-sitter-nix
+                tree-sitter-tsx
                 tree-sitter-lua
+                tree-sitter-java
+                tree-sitter-rust
+                tree-sitter-wgsl
+                tree-sitter-latex
+                tree-sitter-python
               ]
             ))
           ];

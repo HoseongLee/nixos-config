@@ -39,11 +39,6 @@
         source = ./dotfiles/rofi;
         recursive = true;
       };
-
-      home.file.".config/nvim" = {
-        source = ./dotfiles/nvim;
-        recursive = true;
-      };
     };
   };
 }

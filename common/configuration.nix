@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, outputs, ... }:
 
 {
   imports =
@@ -8,14 +8,19 @@
       ./development.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+		overlays = [
+			outputs.overlays.custom-packages
+		];
+
+		config.allowUnfree = true;
+	};
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.extraOptions = ''
-
     keep-outputs = true
     keep-derivations = true
-
   '';
 
   users.users.hoseong = {
