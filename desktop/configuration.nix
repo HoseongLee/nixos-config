@@ -1,13 +1,12 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, outputs, config, pkgs, lib, ... }:
 
 {
   imports =
-  [
-    ./home.nix
-    ./audio.nix
-    ./neovim.nix
-    ./hardware-configuration.nix
-  ];
+    [
+      ./home.nix
+      ./audio.nix
+      ./hardware-configuration.nix
+    ];
 
   time.hardwareClockInLocalTime = true;
 
@@ -23,7 +22,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "auto";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint ="/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   boot.blacklistedKernelModules = [ "nouveau" ];
 
@@ -52,13 +51,13 @@
   programs.hyprland = {
     enable = true;
     package = (inputs.hyprland.packages.${pkgs.system}.hyprland.override {
-			enableNvidiaPatches = true;
-		});
+      enableNvidiaPatches = true;
+    });
   };
 
   services.xserver = {
     enable = true;
-		videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" ];
 
     displayManager.gdm = {
       enable = true;
@@ -71,14 +70,14 @@
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
     noto-fonts-cjk
   ];
 
   environment.sessionVariables = rec {
-    TERMINAL="alacritty";
-    BROWSER="firefox";
+    TERMINAL = "alacritty";
+    BROWSER = "firefox";
   };
 
   virtualisation.docker.enable = true;

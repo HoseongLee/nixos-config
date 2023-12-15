@@ -1,10 +1,10 @@
-{ inputs, pkgs, ... }: 
+{ inputs, pkgs, ... }:
 
 {
   imports =
-  [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+    [
+      inputs.home-manager.nixosModules.home-manager
+    ];
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -30,6 +30,12 @@
         recursive = true;
       };
 
+      programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+      };
+
       programs.zsh = {
         enable = true;
         dotDir = ".config/zsh";
@@ -51,7 +57,7 @@
 
       programs.home-manager.enable = true;
 
-      home.stateVersion = "23.05";
+      home.stateVersion = "23.11";
     };
   };
 }

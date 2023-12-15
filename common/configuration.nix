@@ -2,12 +2,21 @@
 
 {
   imports =
-  [
-    ./home.nix
-  ];
+    [
+      ./home.nix
+      ./neovim.nix
+      ./development.nix
+    ];
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.extraOptions = ''
+
+    keep-outputs = true
+    keep-derivations = true
+
+  '';
 
   users.users.hoseong = {
     shell = pkgs.zsh;
@@ -16,7 +25,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    exa
+    eza
     git
     gcc
     wget
@@ -28,24 +37,26 @@
   ];
 
   environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "\${HOME}/.cache";
+    XDG_CACHE_HOME = "\${HOME}/.cache";
     XDG_CONFIG_HOME = "\${HOME}/.config";
-    XDG_BIN_HOME    = "\${HOME}/.local/bin";
-    XDG_DATA_HOME   = "\${HOME}/.local/share";
+    XDG_BIN_HOME = "\${HOME}/.local/bin";
+    XDG_DATA_HOME = "\${HOME}/.local/share";
 
-    WLR_NO_HARDWARE_CURSORS="1";
+    WLR_NO_HARDWARE_CURSORS = "1";
 
-    GTK_IM_MODULE="kime";
-    QT_IM_MODULE="kime";
+    GTK_IM_MODULE = "kime";
+    QT_IM_MODULE = "kime";
 
-    GPG_TTY="\${TTY}";
+    GPG_TTY = "\${TTY}";
 
-    LESSHISTFILE="";
+    LESSHISTFILE = "";
 
-    ZDOTDIR="\${XDG_CONFIG_HOME}/zsh";
-    GRADLE_USER_HOME="\${XDG_DATA_HOME}/gradle";
+    ZDOTDIR = "\${XDG_CONFIG_HOME}/zsh";
+    GRADLE_USER_HOME = "\${XDG_DATA_HOME}/gradle";
 
-    EDITOR="nvim";
+    DIRENV_WARN_TIMEOUT = "24h";
+
+    EDITOR = "nvim";
   };
 
   programs.gnupg.agent = {
@@ -59,5 +70,5 @@
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
