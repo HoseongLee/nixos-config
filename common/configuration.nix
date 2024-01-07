@@ -33,12 +33,14 @@
     eza
     git
     gcc
+    glib
     wget
     sshfs
     unzip
     gnupg
     gnumake
     killall
+    cifs-utils
   ];
 
   environment.sessionVariables = rec {

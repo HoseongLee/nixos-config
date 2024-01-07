@@ -18,6 +18,8 @@ lspconfig.pyright.setup({
 
 lspconfig.metals.setup({})
 
+lspconfig.ocamllsp.setup({})
+
 lspconfig.rust_analyzer.setup({})
 lspconfig.wgsl_analyzer.setup({})
 

@@ -1,6 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
 map('n', '<F4>', 'ggVGy', {noremap=true})
+map('n', '<F5>', ':!nix run<CR>', {noremap=true})
 
 map('n', '<C-n>', ':NERDTreeToggle<CR>', {noremap=true})
 

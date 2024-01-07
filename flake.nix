@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
 
-    hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.33.1";
+    hyprland.url = "github:hyprwm/Hyprland/refs/tags/v0.34.0";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
