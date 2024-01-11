@@ -33,7 +33,6 @@
     eza
     git
     gcc
-    glib
     wget
     sshfs
     unzip

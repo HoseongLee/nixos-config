@@ -23,6 +23,8 @@
 
             nvim-lspconfig
 
+            nvim-jdtls
+
             nvim-cmp
             cmp-path
             cmp-nvim-lsp
