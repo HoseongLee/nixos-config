@@ -37,7 +37,7 @@
     inputMethod.enabled = "kime";
   };
 
-  users.users.hoseong.extraGroups = [ "wheel" "video" "docker" "networkmanager" ];
+  users.users.hoseong.extraGroups = [ "wheel" "video" "networkmanager" ];
 
   environment.systemPackages = with pkgs; [
     patchelf
@@ -65,9 +65,6 @@
 
   programs.xwayland.enable = true;
 
-  services.gvfs.enable = true;
-  security.polkit.enable = true;
-
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
     noto-fonts-cjk
@@ -80,7 +77,4 @@
     CARGO_HOME = "\${XDG_DATA_HOME}/cargo";
     CUDA_CACHE_PATH = "\${XDG_CACHE_HOME}/nv";
   };
-
-  virtualisation.docker.enable = true;
-  virtualisation.podman.enable = true;
 }

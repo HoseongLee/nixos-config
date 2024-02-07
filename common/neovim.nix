@@ -7,6 +7,7 @@
 
     rust-analyzer
 		wgsl-analyzer
+    wgsl-formatter
 
     nodePackages.pyright
     nodePackages.typescript-language-server

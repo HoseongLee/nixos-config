@@ -2,8 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    slack
     texlive.combined.scheme-full
+    (python311.withPackages (ps: with ps; [six]))
   ];
 
   services.mongodb.enable = true;

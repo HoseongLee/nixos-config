@@ -26,6 +26,7 @@
   users.users.hoseong = {
     shell = pkgs.zsh;
     isNormalUser = true;
+  	extraGroups = [ "docker" ];
     hashedPassword = "$6$nsZoc4qtpDeiOqMA$l.RS/yzBkTtAe6PGcI7yNrbFY3SG8li95I3k6YyjTbM8VDaUzYw1QpVuCMFC6iJqVtZuGI37yvmWlYF4K0vrT/";
   };
 
@@ -70,11 +71,21 @@
     enableSSHSupport = true;
   };
 
+  services.gvfs.enable = true;
   services.pcscd.enable = true;
+  security.polkit.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
+
+  virtualisation.docker = {
+		enable = true;
+		rootless = {
+			enable = true;
+			setSocketVariable = true;
+		};
+	};
 
   system.stateVersion = "23.11";
 }

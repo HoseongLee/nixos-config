@@ -13,9 +13,11 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { self, nixpkgs, NixOS-WSL, ... }@inputs:
+  outputs = { self, nixpkgs, NixOS-WSL, vscode-server, ... }@inputs:
     let
       inherit (self) outputs;
 
@@ -42,6 +44,7 @@
           specialArgs = { inherit inputs outputs system; };
 
           modules = [
+            vscode-server.nixosModules.default
             ./common/configuration.nix
             ./wsl/configuration.nix
             NixOS-WSL.nixosModules.wsl
