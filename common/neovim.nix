@@ -6,7 +6,7 @@
     texlab
 
     rust-analyzer
-		wgsl-analyzer
+    wgsl-analyzer
     wgsl-formatter
 
     nodePackages.pyright

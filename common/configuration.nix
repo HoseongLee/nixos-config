@@ -9,12 +9,14 @@
     ];
 
   nixpkgs = {
-		overlays = [
-			outputs.overlays.custom-packages
-		];
+    overlays = [
+      outputs.overlays.custom-packages
+    ];
 
-		config.allowUnfree = true;
-	};
+    config.allowUnfree = true;
+  };
+
+  time.hardwareClockInLocalTime = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -26,7 +28,7 @@
   users.users.hoseong = {
     shell = pkgs.zsh;
     isNormalUser = true;
-  	extraGroups = [ "docker" ];
+    extraGroups = [ "docker" ];
     hashedPassword = "$6$nsZoc4qtpDeiOqMA$l.RS/yzBkTtAe6PGcI7yNrbFY3SG8li95I3k6YyjTbM8VDaUzYw1QpVuCMFC6iJqVtZuGI37yvmWlYF4K0vrT/";
   };
 
@@ -79,13 +81,10 @@
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
-  virtualisation.docker = {
-		enable = true;
-		rootless = {
-			enable = true;
-			setSocketVariable = true;
-		};
-	};
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   system.stateVersion = "23.11";
 }

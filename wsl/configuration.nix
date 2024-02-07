@@ -20,10 +20,10 @@
 
   environment.systemPackages = with pkgs; [
     glib
-		distrobox
+    distrobox
   ];
 
-	services.vscode-server.enable = true;
+  services.vscode-server.enable = true;
 
   users.users.hoseong.extraGroups = [ "wheel" ];
 }
