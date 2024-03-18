@@ -8,8 +8,11 @@ eval "$(direnv hook zsh)"
 
 rebuild () { sudo nixos-rebuild --flake .#"$1" switch }
 
-alias ls='exa -l --color=always --group-directories-first'
-alias lsa='exa -al --color=always --group-directories-first'
+alias ls='eza -l --color=always --group-directories-first'
+alias lsa='eza -al --color=always --group-directories-first'
+
+alias CS447='ssh root@172.10.5.148'
+alias CS524='ssh student@172.10.9.55'
 
 alias mv=mv -i
 alias cp=cp -i

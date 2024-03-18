@@ -5,7 +5,6 @@
     [
       ./home.nix
       ./neovim.nix
-      ./development.nix
     ];
 
   nixpkgs = {
@@ -16,6 +15,7 @@
     config.allowUnfree = true;
   };
 
+  time.timeZone = "Asia/Seoul";
   time.hardwareClockInLocalTime = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

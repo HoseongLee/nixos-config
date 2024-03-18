@@ -10,12 +10,6 @@
     users.hoseong = {
       home.file.".icons/default".source = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
 
-      gtk = {
-        enable = true;
-        cursorTheme.name = "capitaine-cursors-white";
-        cursorTheme.package = pkgs.capitaine-cursors;
-      };
-
       home.packages = with pkgs; [
         capitaine-cursors
 
@@ -29,6 +23,12 @@
 
         gnome.nautilus
       ];
+
+      gtk = {
+        enable = true;
+        cursorTheme.name = "capitaine-cursors-white";
+        cursorTheme.package = pkgs.capitaine-cursors;
+      };
 
       home.file.".config/alacritty" = {
         source = ./dotfiles/alacritty;
