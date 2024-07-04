@@ -41,14 +41,13 @@
     nix-index
 
     distrobox
+    zulip
 
     wl-clipboard
   ];
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
+  programs.hyprland.enable = true;
+  programs.xwayland.enable = true;
 
   services.xserver = {
     enable = true;
@@ -59,8 +58,6 @@
       wayland = true;
     };
   };
-
-  programs.xwayland.enable = true;
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
